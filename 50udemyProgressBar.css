@@ -3,8 +3,10 @@
 * {
   box-sizing: border-box;
 }
-
+/* creating varibles in css */
 :root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
 }
 
 body {
@@ -31,14 +33,16 @@ body {
   width: 350px;
 }
 
+/* - here we used a before element to copy progress bar  */
+
 /* 'before' element. instead of creating another div in HTML, we added a before 'element'
-for convience. its content is empty, only showing background color. in furture ask myself,
+for convience. its content is empty, only showing background color. in the gfurture ask myself,
 can a before / after element be more efficient? PROS: quick element additions, copy and paste
 elements, bullet & number points for lists. + dynamic (animation) properties.
 - Used strickly when creating elements in css*/
 .progress-container::before {
   content: "";
-  background-color: #e0e0e0;
+  background-color: var(--line-border-empty);
   position: absolute;
   top: 50%;
   left: 0;
@@ -49,7 +53,7 @@ elements, bullet & number points for lists. + dynamic (animation) properties.
 }
 
 .progress {
-  background-color: #3498db;
+  background-color: var(--line-border-fill);
   position: absolute;
   top: 50%;
   left: 0;
@@ -73,10 +77,35 @@ elements, bullet & number points for lists. + dynamic (animation) properties.
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid #e0e0e0;
+  border: 3px solid var(--line-border-empty);
   transition: 0.4s ease;
 }
 
 .circle.active {
-  border-color: #3498db;
+  border-color: var(--line-border-fill);
+}
+
+.btn {
+  background-color: var(--line-border-fill);
+  color: #ffffff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
 }
